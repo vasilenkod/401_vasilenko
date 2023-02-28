@@ -1,0 +1,44 @@
+﻿<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="ShuffleNet" Height="600" Width="500">
+    <TabControl>
+        <TabItem Header="Start">
+            <Grid Background="White" Margin="10,0,-10,0">
+                <Button Name="Files_selection" Content="Select images" Click="OpenFolder" HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="0,124,0,0"/>
+                <ProgressBar Minimum="0" Maximum="1000" Name="ProgressBar" HorizontalAlignment="Center" Height="10" Margin="0,211,0,0" VerticalAlignment="Top" Width="300"/>
+                <Button Content="Cancel" Click="Stop" HorizontalAlignment="Center" Margin="0,242,0,0" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="219,190,0,0" TextWrapping="Wrap" Text="Progress..." VerticalAlignment="Top" Width="66"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Images">
+            <TabItem.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="#FFFFFEFE" Offset="1"/>
+                </LinearGradientBrush>
+            </TabItem.Background>
+            <Grid Background="White">
+                <ListView x:Name="ListViewImage" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                                <Image Width="230" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                                    <Image.Source>
+                                        <BitmapImage DecodePixelWidth="230" UriSource="{Binding Path}" />
+                                    </Image.Source>
+                                </Image>
+                                <TextBlock Text="{Binding Descr}" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </TabItem>
+    </TabControl>
+
+</Window>
